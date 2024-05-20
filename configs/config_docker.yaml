@@ -21,7 +21,7 @@ wallet:
   # 0: through startup parameters
   # 1: through plain text private key in config file
   # 2: through path and password of the keystore in config file
-  mode: 0
+  mode: 1
   # plain text private key, needed when mode is 1
   private_key: "cfe306ade442cde406f43cb9860ef851f11a510bb55f11853d1b693e74b0bd0b"
   # path of the keystore, needed when mode is 2
