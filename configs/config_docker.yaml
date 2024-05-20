@@ -1,27 +1,30 @@
-env: ENV_PROD
-server:
-  http:
-    addr: 0.0.0.0:8000
-    timeout: 1s
-  grpc:
-    addr: 0.0.0.0:9000
-    timeout: 1s
 chain:
+  # The chain id of the chain that the verifier program interacts with
   chain_id: 5611
+  # The chain name of the chain that the verifier program interacts with
   chain_name: "opBNB"
+  # The rpc url of the blockchain node which verifier program interacts with
   rpc_url: "https://opbnb-testnet.nodereal.io/v1/9e210feafbec4ed9bd48f855c2bd979a"
-  start_block: 0
-  offset_block: 3600 # opBNB block time: 1 sec. An offset of 3600 starts fetching blocks from 1 hours ago.
+  # The block height at which verifier starts synchronizing data
+  start_block: 26623154
+  # block height interval for synchronizing data at one time
+  offset_block: 1
 contract:
-  addr: "0xbd9a9ac0172f9eddebea4172fb7d9a3ca95cee52"
-  tee_addr : "0x7f57004E08ef1702b2b88b87ae01a561ae10F10e"
+  # The contract address of carv on this chain
+  addr: "0x39afd848cd4a83cddd06f340ae584c547e53873d"
+  # The contract address of tee on this chain
+  tee_addr : "0x19baa72643aa11b28cb6251fd7596201778ead9a"
+  # The topic id of the event corresponding to the attestation published by tee
   topic: "0x99a038e9d345d0b12130b3b1fb003bf8f2d3a5c27ce2a800bbb1608efff6c591"
 wallet:
+  # wallet mode, by which way to pass the private key
+  # 0: through startup parameters
+  # 1: through plain text private key in config file
+  # 2: through path and password of the keystore in config file
   mode: 0
-  private_key: ""
-  keystore_path: ""
-  keystore_password: ""
-dacp:
-  identity_path: "/data/conf/identity.json"
-  tcb_path: "/data/conf/tcb.json"
-  trusted_path: "/data/conf/trusted.json"
+  # plain text private key, needed when mode is 1
+  private_key: "cfe306ade442cde406f43cb9860ef851f11a510bb55f11853d1b693e74b0bd0b"
+  # path of the keystore, needed when mode is 2
+  keystore_path: "/Users/alice/.keystore"
+  # password of the keystore, needed when mode is 2
+  keystore_password: "123456"
